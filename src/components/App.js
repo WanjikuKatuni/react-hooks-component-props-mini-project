@@ -1,13 +1,36 @@
 import React from "react";
 import blogData from "../data/blog";
+import Header from "./Header";
+import About from "./About";
+import ArticleList from "./ArticleList"
 
 console.log(blogData);
 
 function App() {
+  const posts = blogData.posts
+
+  const name="Overreacted";
+  const imageSrc= "https://via.placeholder.com/215"
+  const blogText="I explain with words and code."
+
+
+
   return (
     <div className="App">
-      You're on your own from here! Follow the deliverables; test things out in
-      the browser as you write your code; and good luck!
+
+      <Header   name={name}/>
+      <About imageUrl={imageSrc} {about={blogText}}/>
+
+      {/* maps through posts */}
+      {posts.map((post)=>(
+
+        <ArticleList 
+        key={post.id}
+        title={post.title}
+        date={post.date}
+        preview={post.preview}
+        />
+      ))}
     </div>
   );
 }
